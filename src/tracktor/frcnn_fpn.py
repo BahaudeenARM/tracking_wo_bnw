@@ -11,7 +11,11 @@ from torchvision.models.detection.transform import resize_boxes
 class FRCNN_FPN(FasterRCNN):
 
     def __init__(self, num_classes):
-        backbone = resnet_fpn_backbone('resnet50', False)
+        # removing positional arguments
+        backbone = resnet_fpn_backbone(
+            backbone_name="resnet50",
+            weights=None
+        )
         super(FRCNN_FPN, self).__init__(backbone, num_classes)
         # these values are cached to allow for feature reuse
         self.original_image_sizes = None

@@ -1,1 +1,3 @@
 src/tracktor/__pycache__/*
+src/tracktor/datasets/__pycache__/*
+src/tracktor.egg-info/*
