@@ -3,6 +3,7 @@ from .mot_wrapper import MOT17Wrapper, MOT20Wrapper
 from .mot_reid_wrapper import MOTreIDWrapper
 from .mot15_wrapper import MOT15Wrapper
 from .marcuhmot import MarCUHMOT
+from .vta_offline_mot_wrapper import VTAOfflineMotWrapper
 
 
 _sets = {}
@@ -29,6 +30,10 @@ for split in ['train', 'small_val', 'small_train']:
 for split in ['PETS09-S2L1', 'TUD-Stadtmitte', 'TUD-Campus', 'train', 'test', 'last3train']:
     name = f'mot15_{split}'
     _sets[name] = (lambda *args, split=split: MOT15Wrapper(split, *args))
+
+for split in ['test', '']:
+    name = f'vta_offline_mot_{split}'
+    _sets[name] = (lambda *args, split=split: VTAOfflineMotWrapper(split, *args))
 
 for split in ['small_train', 'small_val', 'train']:
     name = f'marcuhmot_{split}'
